@@ -159,6 +159,18 @@ body{
     0 0 50px #60a5fa;
 }
 
+@media(max-width:600px){
+
+    .hero-left h1{
+        font-size:2.2rem;
+        line-height:1.2;
+    }
+
+    .hero-left p{
+        font-size:1rem;
+    }
+} 
+
 .hero-left p{
 
     font-size:1.2rem;
@@ -588,3 +600,17 @@ footer p{
     }
 }
 
+@media(max-width:900px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+        padding:15px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px;
+    }
+}
