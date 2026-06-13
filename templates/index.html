@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AstroVision - Astronomy Image Classification</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+    <img
+        src="static/images/Logo.png"
+        alt="AstroVision Logo">
+
+    <span>DeepCosmos</span>
+
+</div>
+
+        <ul class="nav-links">
+
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#upload">Upload</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#findings">Findings</a></li>
+
+        </ul>
+
+    </nav>
+
+    <!-- ================= HERO ================= -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-container">
+
+            <div class="hero-left">
+
+                <h1>
+                    Astronomy Image Classification
+                </h1>
+
+                <p>
+                    Explore galaxies, nebulae, planets, stars and constellations using Deep Learning.
+                </p>
+
+                <a href="#upload" class="hero-btn">
+                    Analyze Image
+                </a>
+
+            </div>
+
+            <div class="hero-right">
+
+                <img
+                    src="{{ url_for('static', filename='images/astronaut.png') }}"
+                    alt="Astronaut">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about" class="about">
+
+        <h2>About Project</h2>
+
+        <div class="about-card">
+
+            <p>
+                This project uses a Deep Learning model based on EfficientNetB0
+                to classify astronomical images into five categories.
+            </p>
+
+            <br>
+
+            <ul>
+
+                <div class="class-grid">
+
+    <div class="class-card">
+        <img src="static/images/12.jpg" alt="Galaxy">
+        <h3>Galaxy</h3>
+    </div>
+
+    <div class="class-card">
+        <img src="static/images/14.jpg" alt="Nebula">
+        <h3>Nebula</h3>
+    </div>
+
+    <div class="class-card">
+        <img src="static/images/15.jpg" alt="Planet">
+        <h3>Planet</h3>
+    </div>
+
+    <div class="class-card">
+        <img src="static/images/16.jpg" alt="Star">
+        <h3>Star</h3>
+    </div>
+
+    <div class="class-card">
+        <img src="static/images/13.jpg" alt="Constellation">
+        <h3>Constellation</h3>
+    </div>
+
+</div>
+
+            </ul>
+
+            <br>
+
+        </div>
+
+    </section>
+
+    <section class="stats">
+
+    <div class="stat-card">
+
+        <h2>77.13%</h2>
+
+        <p>Validation Accuracy</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h2>5</h2>
+
+        <p>Classes</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h2>941+</h2>
+
+        <p>Images</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h2>EfficientNetB0</h2>
+
+        <p>Model</p>
+
+    </div>
+
+</section>
+
+<!-- ================= UPLOAD ================= -->
+
+<section id="upload" class="upload">
+
+    <h2>Upload Astronomy Image</h2>
+
+    <div class="upload-card">
+
+        <form
+            action="/predict"
+            method="POST"
+            enctype="multipart/form-data">
+
+            <input
+                type="file"
+                name="image"
+                id="imageInput"
+                accept="image/*"
+                required>
+
+            <br>
+
+            <img
+                id="previewImage"
+                src=""
+                alt="Preview Image"
+                style="
+                display:none;
+                width:350px;
+                margin-top:25px;
+                border-radius:20px;
+                box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+            
+            <p id="predictionText"></p>
+
+
+            <br><br>
+
+            <button
+                type="submit"
+                id="analyzeBtn">
+
+                Analyze Image
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% if prediction %}
+<script>
+    window.onload = function() {
+        document.getElementById("results")
+                .scrollIntoView({behavior:"smooth"});
+    };
+</script>
+{% endif %}
+
+    <!-- ================= RESULTS ================= -->
+
+    <section id="results" class="results">
+
+    <h2>Prediction Result</h2>
+
+    <div class="result-card">
+
+        {% if prediction %}
+
+            <h3>
+                {{ prediction }}
+            </h3>
+
+            {% if image_path %}
+
+                <img
+                    src="{{ image_path }}"
+                    style="
+                    width:300px;
+                    margin-top:20px;
+                    border-radius:15px;">
+
+            {% endif %}
+
+        {% else %}
+
+            <h3>
+                Prediction
+            </h3>
+
+            <p>
+
+                Upload an image to see results.
+
+            </p>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+<!-- ================= DATASET INFO ================= -->
+<section id="findings" class="findings">
+
+    <h2>Dataset Overview</h2>
+
+    <div class="finding-card">
+
+<p>
+
+    This astronomy dataset contains carefully selected images of celestial
+    objects collected from publicly available astronomical image sources.
+    The dataset was prepared to train a deep learning model capable of
+    recognizing and classifying different categories of space objects.
+
+</p>
+
+<br>
+
+<p>
+
+    <strong>Total Images:</strong>
+    941 Astronomy Images
+
+</p>
+
+<br>
+
+<p>
+
+    <strong>Classes Included:</strong>
+
+</p>
+
+<ul>
+
+    <li>🌠 Constellation – Patterns formed by groups of stars in the night sky.</li>
+
+    <li>🌌 Galaxy – Massive systems containing billions of stars, gas and dust.</li>
+
+    <li>☁️ Nebula – Interstellar clouds of gas and cosmic dust.</li>
+
+    <li>🪐 Planet – Celestial bodies orbiting stars with unique surface features.</li>
+
+    <li>⭐ Star – Self-luminous astronomical objects that generate energy through nuclear fusion.</li>
+
+</ul>
+
+<br>
+
+<p>
+
+    <strong>Image Resolution:</strong>
+    All images were resized to 224 × 224 pixels before training.
+
+</p>
+
+<br>
+
+<p>
+
+    <strong>Dataset Split:</strong>
+    80% Training Data and 20% Validation Data.
+
+</p>
+
+<br>
+
+<p>
+
+    <strong>Preprocessing & Augmentation:</strong>
+    Image normalization, horizontal flipping, rotation,
+    zooming and augmentation techniques were applied to improve
+    model generalization and reduce overfitting.
+
+</p>
+
+<br>
+
+<p>
+
+    <strong>Challenges:</strong>
+    Certain classes such as Galaxy and Nebula share similar visual
+    characteristics, making classification more challenging.
+    Variations in brightness, color distribution and object scale
+    also increase the complexity of the task.
+
+</p>
+
+    </div>
+
+</section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+
+            Astronomy Image Classification Project
+
+        </p>
+
+        <p>
+
+            Built using HTML, CSS, JavaScript, Flask and Deep Learning
+
+        </p>
+
+    </footer>
+
+    <!-- JS -->
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

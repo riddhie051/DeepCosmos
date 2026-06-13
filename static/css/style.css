@@ -1,0 +1,590 @@
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:
+    linear-gradient(
+    rgba(5,8,22,0.90),
+    rgba(5,8,22,0.95)),
+
+    url("../images/space-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    color:white;
+
+    overflow-x:hidden;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 8%;
+
+    background:rgba(8,12,30,0.70);
+
+    backdrop-filter:blur(15px);
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.08);
+
+    z-index:1000;
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:1.5rem;
+
+    font-weight:700;
+}
+
+.logo img{
+
+    width:30px;
+
+    height:30px;
+
+    object-fit:contain;
+
+    filter:
+    drop-shadow(0 0 5px #60a5fa);
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:30px;
+
+    list-style:none;
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:500;
+
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+
+    color:#60a5fa;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    padding-top:100px;
+}
+
+.hero-container{
+
+    width:90%;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:50px;
+}
+
+.hero-left{
+
+    flex:1;
+}
+
+.hero-left h1{
+
+    font-size:5.5rem;
+
+    font-weight:700;
+
+    line-height:1.15;
+
+    margin-bottom:25px;
+
+    text-shadow:
+    0 0 10px #60a5fa,
+    0 0 30px #60a5fa,
+    0 0 50px #60a5fa;
+}
+
+.hero-left p{
+
+    font-size:1.2rem;
+
+    color:#dbeafe;
+
+    margin-bottom:35px;
+
+    line-height:1.8;
+}
+
+.hero-btn{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:15px 32px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    transition:0.3s;
+}
+
+.hero-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 0 15px #3b82f6,
+    0 0 40px #3b82f6;
+}
+
+.hero-right{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+}
+
+.hero-right img{
+
+    width:450px;
+
+    animation:float 4s ease-in-out infinite;
+}
+
+/* =========================
+   FLOAT ANIMATION
+========================= */
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-20px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* =========================
+   COMMON SECTIONS
+========================= */
+
+.about,
+.upload,
+.results,
+.findings{
+
+    padding:120px 10%;
+}
+
+.about h2,
+.upload h2,
+.results h2,
+.findings h2{
+
+    text-align:center;
+
+    font-size:2.5rem;
+
+    margin-bottom:50px;
+}
+
+/* =========================
+   GLASS CARDS
+========================= */
+
+.about-card,
+.upload-card,
+.result-card,
+.finding-card{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    background:
+    rgba(255,255,255,0.07);
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid rgba(255,255,255,0.10);
+
+    transition:0.4s;
+}
+
+.about-card:hover,
+.upload-card:hover,
+.result-card:hover,
+.finding-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+    0 15px 40px rgba(59,130,246,0.25);
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-card p{
+
+    line-height:1.9;
+
+    font-size:1.05rem;
+}
+
+.about-card ul{
+
+    margin-left:20px;
+
+    line-height:2;
+}
+
+.about-card h3{
+
+    color:#60a5fa;
+
+    margin-top:20px;
+}
+
+/* =========================
+   UPLOAD
+========================= */
+
+.upload-card{
+
+    text-align:center;
+}
+
+#imageInput{
+
+    width:100%;
+
+    padding:25px;
+
+    border:2px dashed
+    rgba(255,255,255,0.30);
+
+    border-radius:20px;
+
+    background:transparent;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+#previewImage{
+
+    width:300px;
+
+    margin-top:25px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.4);
+}
+
+#analyzeBtn{
+
+    margin-top:25px;
+
+    border:none;
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:14px 28px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    transition:0.3s;
+}
+
+#analyzeBtn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 0 15px #3b82f6,
+    0 0 35px #3b82f6;
+}
+
+/* =========================
+   RESULTS
+========================= */
+
+.result-card{
+
+    text-align:center;
+}
+
+.result-card h3{
+
+    font-size:2rem;
+
+    margin-bottom:20px;
+}
+
+#predictionText{
+
+    font-size:1.2rem;
+
+    color:#dbeafe;
+}
+
+/* =========================
+   FINDINGS
+========================= */
+
+.finding-card{
+
+    line-height:2;
+
+    font-size:1.05rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    text-align:center;
+
+    padding:40px;
+
+    margin-top:50px;
+
+    background:
+    rgba(8,12,30,0.85);
+
+    border-top:
+    1px solid rgba(255,255,255,0.08);
+}
+
+footer p{
+
+    margin:8px 0;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .hero-container{
+
+        flex-direction:column-reverse;
+
+        text-align:center;
+    }
+
+    .hero-left h1{
+
+        font-size:3rem;
+    }
+
+    .hero-right img{
+
+        width:300px;
+    }
+
+    .nav-links{
+
+        gap:15px;
+    }
+}
+
+.stats{
+
+    padding:60px 10%;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:25px;
+}
+
+.stat-card{
+
+    text-align:center;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    border:
+    1px solid rgba(255,255,255,0.1);
+}
+
+.stat-card h2{
+
+    color:#60a5fa;
+
+    margin-bottom:10px;
+}
+
+/* =========================
+   CLASS CARDS
+========================= */
+
+.class-grid{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:30px;
+
+    margin-top:40px;
+}
+
+.class-card{
+
+    width:230px;
+
+    min-height:320px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    transition:0.3s;
+}
+
+.class-card:hover{
+
+    transform:
+    translateY(-10px);
+
+    box-shadow:
+    0 15px 35px rgba(59,130,246,0.3);
+}
+
+.class-card img{
+
+    width:190px;
+
+    height:190px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    margin-bottom:15px;
+}
+
+.class-card h3{
+
+    padding:15px;
+
+    font-size:1.1rem;
+
+    color:white;
+}
+
+@media(max-width:900px){
+
+    .stats{
+
+        grid-template-columns:1fr 1fr;
+    }
+}
+
