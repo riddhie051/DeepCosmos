@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, url_for
 from tensorflow.keras.models import load_model
-from tensorflow.keras.utils import load_img, img_to_array
 from tensorflow.keras.applications.efficientnet import preprocess_input
 
 import numpy as np
 import os
+from PIL import Image
 
 app = Flask(__name__)
 
@@ -39,6 +39,14 @@ UPLOAD_FOLDER = "static/uploads"
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
+
+# =========================
+# HEALTH CHECK
+# =========================
+
+@app.route("/healthz")
+def healthz():
+    return "ok", 200
 
 # =========================
 # HOME PAGE
@@ -92,12 +100,18 @@ def predict():
     # IMAGE PREPROCESSING
     # =========================
 
-    img = load_img(
-        filepath,
-        target_size=(224, 224)
+    img = Image.open(filepath)
+
+    img = img.convert("RGB")
+
+    img = img.resize((224, 224))
+
+    img_array = np.array(
+        img,
+        dtype=np.float32
     )
 
-    img_array = img_to_array(img)
+    img.close()
 
     img_array = np.expand_dims(
         img_array,
@@ -143,5 +157,12 @@ def predict():
 # =========================
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 7860))
-    app.run(host="0.0.0.0", port=port)
+
+    port = int(
+        os.environ.get("PORT", 7860)
+    )
+
+    app.run(
+        host="0.0.0.0",
+        port=port
+    )
