@@ -592,11 +592,11 @@ footer p{
     color:white;
 }
 
-@media(max-width:900px){
+@media(max-width:768px){
 
     .stats{
 
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:1fr;
     }
 }
 
@@ -618,7 +618,7 @@ footer p{
 @media (max-width: 768px){
 
     .hero{
-        padding-top:180px;
+        padding-top:250px;
     }
 
     .hero-left h1{
@@ -655,3 +655,21 @@ footer p{
         padding:15px;
     }
 }
+
+#previewImage,
+.result-image{
+
+    width:100%;
+    max-width:300px;
+
+    height:auto;
+
+    display:block;
+
+    margin:20px auto;
+
+    border-radius:20px;
+
+    object-fit:contain;
+}
+

@@ -196,15 +196,9 @@
             <br>
 
             <img
-                id="previewImage"
-                src=""
-                alt="Preview Image"
-                style="
-                display:none;
-                width:350px;
-                margin-top:25px;
-                border-radius:20px;
-                box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+            id="previewImage"
+            src=""
+            alt="Preview Image">
             
             <p id="predictionText"></p>
 
@@ -251,11 +245,8 @@
             {% if image_path %}
 
                 <img
-                    src="{{ image_path }}"
-                    style="
-                    width:300px;
-                    margin-top:20px;
-                    border-radius:15px;">
+                src="{{ image_path }}"
+                class="result-image">
 
             {% endif %}
 
