@@ -614,3 +614,44 @@ footer p{
         gap:12px;
     }
 }
+
+@media (max-width: 768px){
+
+    .hero{
+        padding-top:180px;
+    }
+
+    .hero-left h1{
+        font-size:3rem;
+        line-height:1.2;
+    }
+
+    .hero-right img{
+        width:220px;
+        max-width:80%;
+    }
+
+    #previewImage{
+        width:100%;
+        max-width:300px;
+        height:auto;
+    }
+
+    .result-card img{
+        width:100%;
+        max-width:300px;
+        height:auto;
+    }
+
+    .nav-links{
+        gap:12px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+        padding:15px;
+    }
+}
